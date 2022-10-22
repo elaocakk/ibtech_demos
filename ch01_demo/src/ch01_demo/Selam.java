@@ -8,7 +8,7 @@ String world = " everyone ! " ;
 	public String helloEverybody(String word) {
 		
 		String cumle = null;
-		if (word == "Eda") 
+		if (word != "Ela") 
 			cumle = "Hello stranger " ;
 		else
 			cumle = "Hiiii " + word ;

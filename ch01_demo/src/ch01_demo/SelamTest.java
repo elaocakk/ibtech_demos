@@ -8,8 +8,10 @@ public class SelamTest {
 		String cevap = nesne.helloEverybody("Ela");
 		System.out.println(cevap);
 		
-		String cevap2 = nesne.helloEverybody("Edaaa");
+		String cevap2 = nesne.helloEverybody("Eda");
 		System.out.println(cevap2);
 		
 	}
+	
+	
 }
