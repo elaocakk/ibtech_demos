@@ -17,6 +17,12 @@ public class SelamTest {
 		
 		System.out.println(); // ctrl + space
 		
+		Selam nesnetest = new Selam();		
+		String cevaptest = nesnetest.helloEverybody("Ela");
+		System.out.println(cevaptest);
+		
+		String cevap2test = nesnetest.helloEverybody("Eda");
+		System.out.println(cevap2test);
 		
 	}
 	
