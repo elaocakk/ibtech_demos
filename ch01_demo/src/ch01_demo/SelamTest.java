@@ -31,7 +31,7 @@ public class SelamTest {
 //		Scanner in = new Scanner(System.in);		
 //		String yeniIsim = in.nextLine();
 //		String cevaptest2 = nesnetest.helloEverybody(yeniIsim);
-//		System.out.println(cevaptes
+//		System.out.println(cevaptest2);
 		
 		// array demo
 //	    int [] intArray = new int [5];
