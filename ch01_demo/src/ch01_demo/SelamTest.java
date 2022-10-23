@@ -1,5 +1,7 @@
 package ch01_demo;
 
+import java.util.Scanner;
+
 public class SelamTest {
 	
 	public static void main(String[] args) {
@@ -23,6 +25,13 @@ public class SelamTest {
 		
 //		String cevap2test = nesnetest.helloEverybody("Eda");
 //		System.out.println(cevap2test);
+		
+		 
+		System.out.println("Bir isim giriniz:");
+		Scanner in = new Scanner(System.in);		
+		String yeniIsim = in.nextLine();
+		String cevaptest2 = nesnetest.helloEverybody(yeniIsim);
+		System.out.println(cevaptest2);
 		
 	}
 	
