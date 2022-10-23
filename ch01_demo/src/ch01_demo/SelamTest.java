@@ -34,19 +34,41 @@ public class SelamTest {
 //		System.out.println(cevaptes
 		
 		// array demo
-	    int [] intArray = new int [5];
-	    int i, j;
-	    
-	    for(i=0 ; i < intArray.length ; i++ ) {	    	
-	    	intArray[i] = i*i;	    	
-	    }
-	    
-	    for(j=0 ; j < intArray.length ; j++ ) {
-	    	System.out.println(intArray[j]);	    	
-	    }
-	 
-	   
+//	    int [] intArray = new int [5];
+		int i, j;
+//	    
+//	    for(i=0 ; i < intArray.length ; i++ ) {	    	
+//	    	intArray[i] = i*i;	    	
+//	    }
+//	    
+//	    for(j=0 ; j < intArray.length ; j++ ) {
+//	    	System.out.println(intArray[j]);	    	
+//	    }
+//	 	
+//	    System.out.println();
+//	    // foreach yapısındaki for
+//	    for(int z : intArray) {
+//	    	System.out.println(z);	    	
+//	    }
 		
+//		çok boyutlu dizi
+//	    System.out.println();
+	    int [][] intdoubleArray = new int [4][3];    
+	    for(i=0 ; i < intdoubleArray.length ; i++ ) {	  
+	    	for(j=0 ; j < intdoubleArray[i].length ; j++ ) {	  
+	    		intdoubleArray[i][j] = i*j;	    	
+	    	}
+	    }
+	    
+	    System.out.println();
+    	for(i=0 ; i < intdoubleArray.length ; i++ ) {	  
+	    	for(j=0 ; j < intdoubleArray[i].length ; j++ ) {	  
+	    		System.out.print(intdoubleArray[i][j]);	    	
+	    	}
+	    	System.out.println();
+    	}
+	    
+	    
 		
 	}
 	
