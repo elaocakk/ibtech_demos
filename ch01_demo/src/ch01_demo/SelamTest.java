@@ -1,6 +1,6 @@
 package ch01_demo;
 
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class SelamTest {
 	
