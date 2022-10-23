@@ -21,8 +21,8 @@ public class SelamTest {
 		String cevaptest = nesnetest.helloEverybody("Ela");
 		System.out.println(cevaptest);
 		
-		String cevap2test = nesnetest.helloEverybody("Eda");
-		System.out.println(cevap2test);
+//		String cevap2test = nesnetest.helloEverybody("Eda");
+//		System.out.println(cevap2test);
 		
 	}
 	
