@@ -11,6 +11,11 @@ public class SelamTest {
 		String cevap2 = nesne.helloEverybody("Eda");
 		System.out.println(cevap2);
 		
+		System.out.println("test" + "'");
+		
+		System.out.println("test2" + '\'');
+		
+		
 	}
 	
 	
