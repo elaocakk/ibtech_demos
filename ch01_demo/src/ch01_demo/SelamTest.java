@@ -35,7 +35,7 @@ public class SelamTest {
 		
 		// array demo
 //	    int [] intArray = new int [5];
-		int i, j;
+//		int i, j;
 //	    
 //	    for(i=0 ; i < intArray.length ; i++ ) {	    	
 //	    	intArray[i] = i*i;	    	
@@ -53,24 +53,25 @@ public class SelamTest {
 		
 //		çok boyutlu dizi
 //	    System.out.println();
-	    int [][] intdoubleArray = new int [4][3];    
-	    for(i=0 ; i < intdoubleArray.length ; i++ ) {	  
-	    	for(j=0 ; j < intdoubleArray[i].length ; j++ ) {	  
-	    		intdoubleArray[i][j] = i*j;	    	
-	    	}
-	    }
-	    
-	    System.out.println();
-    	for(i=0 ; i < intdoubleArray.length ; i++ ) {	  
-	    	for(j=0 ; j < intdoubleArray[i].length ; j++ ) {	  
-	    		System.out.print(intdoubleArray[i][j]);	    	
-	    	}
-	    	System.out.println();
-    	}
-	    
-	    
+//	   
+
 		
+		// main metodu IDE ile argüman vererek çaıştırma
+//		if (args.length == 2) {
+//			String s1 = args[0];
+//			String s2 = args[1];
+//		}
+//		else {
+//			System.out.println("hatalııııı!");
+//			System.exit(1);
+//		}
+//		
+//	    int leng = args.length;
+//	    for (String tmp : args) {
+//	    	System.out.println(tmp);
+//	    }
+				
+
 	}
-	
 	
 }
