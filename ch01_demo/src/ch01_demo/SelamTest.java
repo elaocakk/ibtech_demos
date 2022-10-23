@@ -15,7 +15,7 @@ public class SelamTest {
 		
 		System.out.println("test2" + '\'');
 		
-		System.out.println();
+		System.out.println(); // ctrl + space
 		
 		
 	}
