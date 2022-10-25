@@ -4,6 +4,19 @@ package ch01_demo;
 
 public class SelamTest {
 	
+	public static double average(int ... numbers) { // deişen paraamere adetli metot
+		
+		int sum = 0;
+		int i = 0;
+		for (int x : numbers) {
+			sum += x;
+			i++;
+		}		
+		
+		return (double)sum/i ;	
+	}
+	
+	
 	public static void main(String[] args) {
 		
 //		Selam nesne = new Selam();		
@@ -70,8 +83,15 @@ public class SelamTest {
 //	    for (String tmp : args) {
 //	    	System.out.println(tmp);
 //	    }
-				
-
+			
+		
+		double average1 = average(1,2);
+		System.out.println(average1);
+		
+		double average2 = average(1,2,4,6);
+		System.out.println(average2);
+		
+			
 	}
 	
 }
