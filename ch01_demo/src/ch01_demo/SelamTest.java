@@ -85,11 +85,11 @@ public class SelamTest {
 //	    }
 			
 		
-		double average1 = average(1,2);
-		System.out.println(average1);
-		
-		double average2 = average(1,2,4,6);
-		System.out.println(average2);
+//		double average1 = average(1,2);
+//		System.out.println(average1);
+//		
+//		double average2 = average(1,2,4,6);
+//		System.out.println(average2);
 		
 			
 	}
