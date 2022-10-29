@@ -42,6 +42,13 @@ public class ArrayDemo {
 		multiDemArray2[1][2] = new int[3];
 		multiDemArray2[1][3] = new int[3];
 		
+		int[] x1 ;
+//		x1 = { 1,2,3 };
+		int[] y1 = { 1,2,3,4,5,6,7 };
+		for (int arrayVar : y1 ) {
+			System.out.println(arrayVar);
+		}
+		
 		
 		
 	}
