@@ -3,7 +3,9 @@ package collections_demo;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.NavigableSet;
+import java.util.PriorityQueue;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -65,6 +67,32 @@ public class HashSetDemo {
 		System.out.println(ns.pollFirst()); // elemanı remove ediyor
 		System.out.println(ns.pollLast());  // elemanı remove ediyor
 		System.out.println(ns.descendingSet());
+
+		System.out.println("-----------------");
+		
+		TreeSet ts = new TreeSet();
+//		TreeSet ts2 = new TreeSet(Comparator c);		
+		SortedSet stEx = new TreeSet();
+		TreeSet ts3 = new TreeSet(stEx);
+		
+		HashSet hsEx = new HashSet();
+		TreeSet ts4 = new TreeSet(hsEx);
+		
+		TreeSet<Integer> ts5 = new TreeSet<Integer> (); // sadece integer
+		
+		System.out.println("-----------------");
+		
+		PriorityQueue pq = new PriorityQueue() ; // defalut size = 11
+		PriorityQueue pq2 = new PriorityQueue(20) ;
+//		PriorityQueue pq3 = new PriorityQueue(int initialCapacity, Comparator c) ;
+		SortedSet s = new TreeSet();
+		PriorityQueue pq4 = new PriorityQueue(s) ;
+		
+		List list = new ArrayList();
+		PriorityQueue pq5 = new PriorityQueue(list) ;
+		
+		System.out.println("-----------------");
+		
 		
 		
 	}
