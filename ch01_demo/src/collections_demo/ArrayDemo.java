@@ -45,11 +45,21 @@ public class ArrayDemo {
 		int[] x1 ;
 //		x1 = { 1,2,3 };
 		int[] y1 = { 1,2,3,4,5,6,7 };
-		for (int arrayVar : y1 ) {
-			System.out.println(arrayVar);
+//		for (int arrayVar : y1 ) {
+//			System.out.println(arrayVar);
+//		}
+		
+		int[][] z1 = { {1,2,3,4},{5,6,7} };		
+		
+		for (int [] z1Arrays : z1 ) {
+			for (int z1ArrayVar : z1Arrays ) {
+				System.out.println(z1ArrayVar);
+			}
+		}		
+		
+		for (int [] z1Arrays : z1 ) {
+				System.out.println(z1Arrays); // referans oldukları için adresleri geliyor listede
 		}
-		
-		
 		
 	}
 
