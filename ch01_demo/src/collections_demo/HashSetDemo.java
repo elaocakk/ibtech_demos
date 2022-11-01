@@ -1,9 +1,11 @@
 package collections_demo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.NavigableSet;
 import java.util.PriorityQueue;
 import java.util.SortedSet;
@@ -93,6 +95,24 @@ public class HashSetDemo {
 		
 		System.out.println("-----------------");
 		
+		HashMap hm = new HashMap(); // default size = 16
+		Map m1 = new HashMap();
+		
+		HashMap hm2 = new HashMap(20);
+		HashMap hm3 = new HashMap(20,.80f); // load factor = % 80
+		HashMap hm4 = new HashMap(m1);
+		
+		HashMap <String,Integer> hm5 = new HashMap<String,Integer>();
+		
+		hm5.put("First", 1);
+		hm5.put("Second", 2);
+		hm5.put("Third", 3);
+		
+		System.out.println(hm5);
+		System.out.println(hm5.get("Second"));
+		System.out.println(hm5.keySet());
+		System.out.println(hm5.entrySet());
+		System.out.println(hm5.values());
 		
 		
 	}
