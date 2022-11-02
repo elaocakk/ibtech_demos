@@ -2,7 +2,6 @@ package collections_demo;
 
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.HashMap;
 import java.util.Iterator;
 
 public class ConcurrentHashMapDemo extends Thread{
