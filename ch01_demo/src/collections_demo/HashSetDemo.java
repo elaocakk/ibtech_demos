@@ -3,17 +3,34 @@ package collections_demo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.IdentityHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.NavigableSet;
 import java.util.PriorityQueue;
+import java.util.SortedMap;
 import java.util.SortedSet;
+import java.util.TreeMap;
 import java.util.TreeSet;
+import java.util.WeakHashMap;
+
+class Temp {
+	
+	public String toString () {
+		return "temp";
+	}
+	
+	public void finalize() {
+		System.out.println("finalize!!!");
+	}
+		
+}
+
 
 public class HashSetDemo {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 	
 		HashSet hs = new HashSet(); // size = 16
 		
@@ -112,7 +129,66 @@ public class HashSetDemo {
 		System.out.println(hm5.get("Second"));
 		System.out.println(hm5.keySet());
 		System.out.println(hm5.entrySet());
-		System.out.println(hm5.values());
+		System.out.println(hm5.values());		
+		
+		System.out.println("-----------------");
+
+		HashMap <Integer,String> hmis = new HashMap <>(); // default size = 16
+		hmis.put(10,"First");
+		hmis.put(10,"Second");
+		
+		System.out.println(hmis);
+		
+		IdentityHashMap <Integer,String> idmis = new IdentityHashMap<>();
+		Integer a1 = new Integer(10); //referansları farklı
+		Integer a2 = new Integer(10);
+//		idmis.put(10,"First");
+//		idmis.put(10,"Second");
+		idmis.put(a1,"First");
+		idmis.put(a2,"Second");
+		System.out.println(idmis);
+		
+		System.out.println("-----------------");
+		
+		HashMap hmt = new HashMap(); // default size = 16
+		Temp t = new Temp();
+		hmt.put(t, "element");
+		System.out.println(hmt);
+		
+		t = null;
+		System.gc(); // GCM call
+		Thread.sleep(3000);
+		
+		System.out.println(hmt); // hala temp key olarak duruyor
+		
+		WeakHashMap hmt2 = new WeakHashMap();
+		Temp t2 = new Temp();
+		hmt2.put(t2, "element");
+		System.out.println(hmt2);
+		
+		t2 = null;
+		System.gc(); // GCM call
+		Thread.sleep(3000);
+		
+		System.out.println(hmt2); // temp key olarak durmuyor
+		
+		
+		System.out.println("-----------------");
+		
+		TreeMap tm = new TreeMap();
+//		TreeMap tm2 = new TreeMap(Comparator c);
+		SortedMap sm = new TreeMap();
+		TreeMap tm3 = new TreeMap(sm);
+		
+		Map m11 = new HashMap();
+		TreeMap tm4 = new TreeMap(m11);
+		
+		tm.put(1,"");
+		tm.put(2,"");
+		tm.put(2,"test");
+		tm.put(3,"test2");
+		
+		System.out.println(tm);
 		
 		
 	}
