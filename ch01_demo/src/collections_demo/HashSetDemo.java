@@ -170,8 +170,7 @@ public class HashSetDemo {
 		System.gc(); // GCM call
 		Thread.sleep(3000);
 		
-		System.out.println(hmt2); // temp key olarak durmuyor
-		
+		System.out.println(hmt2); // temp key olarak durmuyor		
 		
 		System.out.println("-----------------");
 		
@@ -189,6 +188,10 @@ public class HashSetDemo {
 		tm.put(3,"test2");
 		
 		System.out.println(tm);
+		
+		
+		
+		
 		
 		
 	}
