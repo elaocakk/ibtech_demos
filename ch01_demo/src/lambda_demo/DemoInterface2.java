@@ -10,6 +10,7 @@ public interface DemoInterface2 {
 		
 	}
 	
+	
 	// static 
 	static void method4() {
 		
