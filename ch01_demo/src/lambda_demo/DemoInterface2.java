@@ -1,5 +1,6 @@
 package lambda_demo;
 
+@FunctionalInterface
 public interface DemoInterface2 {
 
 	public void method2() ;
