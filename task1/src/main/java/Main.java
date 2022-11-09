@@ -12,13 +12,58 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		// insert customer
+		// **
 		CustomerDao customerDao = new CustomerDao();
 		Customer customer = new Customer("123456789", "ela","ocak");
-		customerDao.insert(customer);
+
+		AddressDao addressDao = new AddressDao();
+		AccountDao accountDao = new AccountDao();
+		PhoneDao phoneDao = new PhoneDao();
+		
+		// ** insert customer
+//		customerDao.create(customer);
+		
+		// ** update customer
+//      	customerDao.update(customer.getId(),"123456789","elanur", "ocak");
+		
+		// ** delete customer		
+//      	customerDao.deleteNew(customer.getId());
+      	
+		// ** list customer
+//      	System.out.println(customerDao.getCustomers());
+		
+//		for (Customer cus : customerDao.getCustomers()) {
+//			System.out.println("Customer id:" + cus.getId());
+//		}
+		
+		customerDao.listCustomers();
+		
+		//--------------------
+		
+		// ** insert address
+		Address address = new Address(customer.getId(),"gebze/kocaeli","8","1","kocaeli");
+//		addressDao.create(address);
+		
+		// ** update address
+		addressDao.update(customer.getId(),"gebze/kocaeli","2","3","kocaeli");
+		// ** delete address
+		// ** list address
 		
 		
+		//--------------------
 		
+		// ** insert account
+		// ** update account
+		// ** delete account
+		// ** list account
+		
+		//--------------------
+		
+		// ** insert phone
+		// ** update phone
+		// ** delete phone
+		// ** list phone
+
 		
 	}
 	

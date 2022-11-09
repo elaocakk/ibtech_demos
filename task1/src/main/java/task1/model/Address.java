@@ -27,22 +27,19 @@ public class Address {
 
 	@Column(name="city") 
 	private String city;
-	
-	@Column(name="disctrict") 
-	private String disctrict;
-	
+
 	public int getId() {
 		return id;
 	}
 
-	public Address(int customerid, String address, String buildno, String apartno, String city,
-			String disctrict) {
+	public Address() { }
+	
+	public Address(int customerid, String address, String buildno, String apartno, String city ) {
 		this.customerid = customerid;
 		this.address = address;
 		this.buildno = buildno;
 		this.apartno = apartno;
 		this.city = city;
-		this.disctrict = disctrict;
 	}
 
 	public int getCustomerId() {
@@ -80,14 +77,5 @@ public class Address {
 	public void setCity(String city) {
 		this.city = city;
 	}
-
-	public String getDisctrict() {
-		return disctrict;
-	}
-
-	public void setDisctrict(String disctrict) {
-		this.disctrict = disctrict;
-	}
-
 	
 }

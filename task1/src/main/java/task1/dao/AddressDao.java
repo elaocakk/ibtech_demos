@@ -45,7 +45,6 @@ public class AddressDao {
 					System.out.print("Id: " + addres.getId());
 					System.out.print(" Customer Id: " + addres.getCustomerId());
 					System.out.print(" City: " + addres.getCity());
-					System.out.println(" Disctrict: " + addres.getDisctrict());
 					System.out.println(" Address: " + addres.getAddress());
 					System.out.println(" Apart No: " + addres.getApartno());					
 					
@@ -66,7 +65,7 @@ public class AddressDao {
 		}
 	}
 	   
-	public void update(int addresId, String address, String buildno, String apartno, String city,String disctrict) {
+	public void update(int addresId, String address, String buildno, String apartno, String city) {
 		Transaction transaction = null;
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 			try {

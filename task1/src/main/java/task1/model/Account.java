@@ -26,6 +26,8 @@ public class Account {
 	@Column(name="balance") 
 	private int balance;
 	
+	public Account() { }
+	
 	public Account(int customerid, String accountnumber, int balance) {
 		super();
 		this.customerid = customerid;

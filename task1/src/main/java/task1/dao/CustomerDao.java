@@ -15,7 +15,7 @@ import task1.util.HibernateUtil;
 
 public class CustomerDao {
 	
-	public void insert(Customer customer) {
+	public void create(Customer customer) {
 		Transaction transaction = null;
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 			transaction = session.beginTransaction();
@@ -34,6 +34,10 @@ public class CustomerDao {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 			return session.createQuery("from customer", Customer.class).list();
 		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	public void listCustomers() {
@@ -46,9 +50,9 @@ public class CustomerDao {
 				for (Iterator iterator = customers.iterator(); iterator.hasNext();) {
 					Customer customer = (Customer) iterator.next();
 					System.out.print("Id: " + customer.getId());
-					System.out.print("TCKN: " + customer.getTckn());
-					System.out.print(" Name: " + customer.getName());
-					System.out.println(" Surname: " + customer.getSurname());			
+					System.out.print("\tTCKN: " + customer.getTckn());
+					System.out.print("\tName: " + customer.getName());
+					System.out.println("\tSurname: " + customer.getSurname());			
 				}
 				
 				transaction.commit();

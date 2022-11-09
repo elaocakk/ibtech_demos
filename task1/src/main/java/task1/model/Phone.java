@@ -20,6 +20,8 @@ public class Phone {
 	@Column(name="phone") 
 	private String phone;	
 	
+	public Phone() {}
+	
 	public Phone(int customerid, String phone) {
 		super();
 		this.customerid = customerid;

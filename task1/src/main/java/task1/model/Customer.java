@@ -47,6 +47,8 @@ public class Customer {
 		this.surname = surname;
 	}
 
+	public Customer() {}
+	
 	public Customer(String tckn, String name, String surname) {
 		this.tckn = tckn;
 		this.name = name;
