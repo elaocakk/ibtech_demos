@@ -14,7 +14,7 @@ public class Main {
 
 		// insert customer
 		CustomerDao customerDao = new CustomerDao();
-		Customer customer = new Customer("123456789", "ela","ocak", "elaocak45@gmail.com" , false, true);
+		Customer customer = new Customer("123456789", "ela","ocak");
 		customerDao.insert(customer);
 		
 		

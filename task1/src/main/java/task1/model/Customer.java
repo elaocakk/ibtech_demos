@@ -23,29 +23,8 @@ public class Customer {
 	@Column(name="surname") 
 	private String surname;
 
-	@Column(name="email") 
-	private String email;
-
-	@Column(name="gender") 
-	private boolean gender;
-	
-	@Column(name="statuid") 
-	private boolean statuid;
-	
 	public String getTckn() {
 		return tckn;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public boolean isGender() {
-		return gender;
-	}
-
-	public boolean isStatuid() {
-		return statuid;
 	}
 
 	public String getName() {
@@ -68,25 +47,10 @@ public class Customer {
 		this.surname = surname;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public void setGender(boolean gender) {
-		this.gender = gender;
-	}
-
-	public Customer(String tckn, String name, String surname, String email, boolean gender, boolean statuid) {
+	public Customer(String tckn, String name, String surname) {
 		this.tckn = tckn;
 		this.name = name;
 		this.surname = surname;
-		this.email = email;
-		this.gender = gender;
-		this.statuid = statuid;
-	}
-
-	public void setStatuid(boolean statuid) {
-		this.statuid = statuid;
 	}
 
 	public int getId() {

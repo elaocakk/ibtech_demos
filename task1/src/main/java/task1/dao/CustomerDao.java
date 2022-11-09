@@ -48,13 +48,7 @@ public class CustomerDao {
 					System.out.print("Id: " + customer.getId());
 					System.out.print("TCKN: " + customer.getTckn());
 					System.out.print(" Name: " + customer.getName());
-					System.out.println(" Surname: " + customer.getSurname());
-					System.out.println(" EMail: " + customer.getEmail());
-					System.out.println(" Surname: " + customer.getSurname());
-					String gender =  ( customer.isGender() == true) ? "Erkek" : "Kadın" ;
-					System.out.println(" Gender: " + gender  );
-					String statu =  ( customer.isStatuid() == true) ? "Aktif" : "Pasif" ;
-					System.out.println(" Statu: " + customer.isStatuid());
+					System.out.println(" Surname: " + customer.getSurname());			
 				}
 				
 				transaction.commit();
@@ -73,7 +67,7 @@ public class CustomerDao {
 		}
 	}
 	   
-	public void update(int customerId, String tckn, String name, String surname, String email, boolean gender, boolean statuid ) {
+	public void update(int customerId, String tckn, String name, String surname) {
 
 		Transaction transaction = null;
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -83,9 +77,7 @@ public class CustomerDao {
 				customer.setTckn(tckn);
 				customer.setName(name);
 				customer.setSurname(surname);
-				customer.setEmail(email);
-				customer.setGender(gender);
-				customer.setStatuid(statuid);
+				
 				session.update(customer);
 				transaction.commit();
 				
