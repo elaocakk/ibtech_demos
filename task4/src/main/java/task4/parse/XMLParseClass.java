@@ -23,7 +23,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -41,6 +40,7 @@ import task1.model.Customer;
 @WebServlet("/loginServlet")
 public class XMLParseClass extends HttpServlet {
 	 private static final long serialVersionUID = 1L;
+	 public static final String xmlFileName2 = "C:\\Users\\Asus\\Desktop\\parseInfo";
 	 public static final String xmlFilePath = "C:\\Users\\Asus\\Desktop\\xmlfile.xml";
 	 public static final String xmlFileName = "C:\\Users\\Asus\\Desktop\\xmlfile";
 	 
@@ -49,20 +49,13 @@ public class XMLParseClass extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		response.getWriter().append("Served at: ").append(request.getContextPath());		
-		
-		response.setContentType("text/plain;charset=UTF-8");
-        ServletOutputStream out = response.getOutputStream();
-
-        out.print("Hello there from Servlet");
-        
-        
+		response.getWriter().append("Served at: ").append(request.getContextPath());		
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 //doGet(request, response);
-				
+			
 		// burada html den gelen bilgileri çekip xml e kaydetmek gerekiyor
 		//********************************* input tan verileri çekme
 		String cmdname = request.getParameter("cmdname");
@@ -121,12 +114,15 @@ public class XMLParseClass extends HttpServlet {
              
             //********************************* executer çalıştırma
 	   		 XMLParseClass xmlparse = new XMLParseClass();
-	       	 String xmlType = xmlFileName;
+//	       	 String xmlType = xmlFileName;
+	       	 
+	       	 String xmlType = xmlFileName2 ;
 	       	 try {
 	   			xmlparse.XMLParse(xmlType);
-	   		} catch (ParserConfigurationException | SAXException | IOException e) {
+	   		 }
+	       	 catch (ParserConfigurationException | SAXException | IOException e) {
 	   			e.printStackTrace();
-	   		}    
+	   		 }    
    		
 	       	 //*********************************  get response writer
 	         PrintWriter writer = response.getWriter();
@@ -179,11 +175,11 @@ public class XMLParseClass extends HttpServlet {
                  Customer cNew = new Customer(tckn, name, surname ) ;
                  xmlList.put(cNew, commandName );
                  
-//                 System.out.println("Customer : " + cNew );
-//                 System.out.println("commandName : " + commandName );
-//                 System.out.println("Tckn : " + tckn );
-//                 System.out.println("Name : " + name );
-//                 System.out.println("Surname : " + surname );
+                 System.out.println("Customer : " + cNew );
+                 System.out.println("commandName : " + commandName );
+                 System.out.println("Tckn : " + tckn );
+                 System.out.println("Name : " + name );
+                 System.out.println("Surname : " + surname );
                  
             }
        }       
@@ -210,7 +206,7 @@ public class XMLParseClass extends HttpServlet {
 			bagAdd.put(BagKey.SURNAME,  xmlcustomer.getSurname());
 
 			CommandExecuter cmdExecuter = new CommandExecuter();
-			Bag customerNewBag = cmdExecuter.execute(cmd, bagAdd);
+			Bag customerNewBag = (Bag) cmdExecuter.execute(cmd, bagAdd);
 			
 			System.out.println("------> customerNewBag : " + customerNewBag );
 			
