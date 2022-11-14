@@ -40,16 +40,12 @@ import task1.model.Customer;
 @WebServlet("/loginServlet")
 public class XMLParseClass extends HttpServlet {
 	 private static final long serialVersionUID = 1L;
-	 public static final String xmlFileName2 = "C:\\Users\\Asus\\Desktop\\parseInfo";
 	 public static final String xmlFilePath = "C:\\Users\\Asus\\Desktop\\xmlfile.xml";
 	 public static final String xmlFileName = "C:\\Users\\Asus\\Desktop\\xmlfile";
-	 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());		
+//		response.getWriter().append("Served at: ").append(request.getContextPath());		
 		
 	}
 
@@ -109,22 +105,24 @@ public class XMLParseClass extends HttpServlet {
  
             transformer.transform(domSource, streamResult);
  
-            System.out.println("Done creating XML File");
- 
+            System.out.println("Done creating XML File"); 
              
             //********************************* executer çalıştırma
 	   		 XMLParseClass xmlparse = new XMLParseClass();
 //	       	 String xmlType = xmlFileName;
 	       	 
-	       	 String xmlType = xmlFileName2 ;
+	       	 String xmlType = xmlFileName ;
 	       	 try {
 	   			xmlparse.XMLParse(xmlType);
 	   		 }
 	       	 catch (ParserConfigurationException | SAXException | IOException e) {
 	   			e.printStackTrace();
-	   		 }    
+	   		 } catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}    
    		
-	       	 //*********************************  get response writer
+	       	 // *********************************  get response writer
 	         PrintWriter writer = response.getWriter();
 	          
 	         // build HTML code
@@ -144,7 +142,7 @@ public class XMLParseClass extends HttpServlet {
 	}
 	
 	
-	public void XMLParse(String xmlType) throws ParserConfigurationException, SAXException, IOException {      
+	public void XMLParse(String xmlType) throws Exception {      
 		
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
@@ -196,17 +194,15 @@ public class XMLParseClass extends HttpServlet {
 			// executer Command ını çağırma
 			CommandDao commandDao = new CommandDao();
 			Command cmd = commandDao.getCommand(commandName);
-			if (!commandCheck(cmd)) {
-				return;
-			}
-
+		
 			Bag bagAdd = new Bag();
 			bagAdd.put(BagKey.TCKN, xmlcustomer.getTckn());
 			bagAdd.put(BagKey.NAME,  xmlcustomer.getName());
 			bagAdd.put(BagKey.SURNAME,  xmlcustomer.getSurname());
 
 			CommandExecuter cmdExecuter = new CommandExecuter();
-			Bag customerNewBag = (Bag) cmdExecuter.execute(cmd, bagAdd);
+            Bag customerNewBag = (Bag) cmdExecuter.execute(cmd, bagAdd);
+//			Bag customerNewBag = (Bag) cmdExecuter.executeString(commandName, bagAdd);
 			
 			System.out.println("------> customerNewBag : " + customerNewBag );
 			
@@ -215,17 +211,7 @@ public class XMLParseClass extends HttpServlet {
         
     }
 	
-	
-	public static boolean commandCheck(Command command) {
-		if (command == null) {
-			System.out.println("*** NOT FOUND ***");
-			return false;
-		}
-		System.out.println("-> Command Information; \n\t" + command.getCommand_name() + "\n\t"
-				+ command.getCommand_description() + "\n\t" + command.getClass_name() + "\n\t" + command.getMethod_name());
-		return true;
-	}
-	
+
 	
 	
 
