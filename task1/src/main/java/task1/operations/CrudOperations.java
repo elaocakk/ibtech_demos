@@ -1,15 +1,16 @@
 package task1.operations;
 
+import task1.bag.Bag;
+
 public interface CrudOperations {
 
-	public void add() ;	
-	public void update() ;	
-	public void delete() ;	
-	public void list() ;	
+	public Bag add(Bag bag);
 	
+	public Bag update(Bag bag);
+	
+	public Bag list();
+	
+	public Bag delete(Bag bag);
 
-	
-	
-	
 	
 }

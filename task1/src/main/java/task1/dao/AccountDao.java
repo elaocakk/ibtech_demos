@@ -28,8 +28,12 @@ public class AccountDao {
 
 	public List<Account> getAccounts() {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			return session.createQuery("from account", Account.class).list();
+			return session.createQuery("from Account", Account.class).list();
 		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	public void listAccounts() {
@@ -61,7 +65,7 @@ public class AccountDao {
 		}
 	}
 	   
-	public void update(long accountId, String accountNumber, int balance) {
+	public void update(int accountId, String accountNumber, int balance) {
 		Transaction transaction = null;
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 			try {

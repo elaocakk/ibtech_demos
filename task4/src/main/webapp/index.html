@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> TASK 5- LOGIN SCREEN </title>
+</head>
+<body>
+	<h1> TASK 5- LOGIN SCREEN </h1>
+	<form name="loginForm" method="post" action="loginServlet">
+	      <label for="fname">Command Name:</label>
+	      
+	      <select name="cmdname" id="cmdname" >
+	      		<option value=""> seçiniz </option>	      	
+	      		<option value="customer_add"> customer_add </option>	     
+	      		<option value="customer_update"> customer_update </option>	      
+	      		<option value="customer_list"> customer_list </option>	      
+	      		<option value="customer_delete"> customer_delete </option>	      
+<!-- 	      		<option value="address_add"> address_add </option>	       -->
+<!-- 	      		<option value="address_update"> address_update </option>	       -->
+<!-- 	      		<option value="address_list"> address_list </option> -->
+<!-- 	      		<option value="address_delete"> address_delete </option>	       	 -->	      	
+	      </select><br><br>
+	      
+<!-- 		  <label for="cusID">ID: (???)</label> -->
+<!-- 		  <input type="text" id="cusID" name="cusID"><br><br> -->
+		  
+		  <label for="tckn">TCKN:</label>
+		  <input type="text" id="tckn" name="tckn"><br><br>
+		  
+		  <label for="name">Name:</label>
+		  <input type="text" id="name" name="name"><br><br>
+		  
+		  <label for="surname">Surname:</label>
+		  <input type="text" id="surname" name="surname"><br><br>    
+		  
+		  <input type="submit" value="Kaydet">
+		  
+	</form>		
+</body>
+</html>

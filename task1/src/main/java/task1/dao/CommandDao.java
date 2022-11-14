@@ -7,33 +7,91 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import task1.cmd.CommandExecuter;
 import task1.model.Account;
 import task1.model.Address;
+import task1.model.Command;
 import task1.model.Customer;
 import task1.model.Phone;
 import task1.util.HibernateUtil;
 
-public class CustomerDao {
+public class CommandDao {
 	
-	public Customer create(Customer customer) {
+//	public Command runCommands() {
+//		Transaction transaction = null;
+//		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+//			try {
+//				transaction = session.beginTransaction();
+//				transaction.commit();
+//				
+//				CommandExecuter cmdExecuter = new CommandExecuter();
+//				
+//				List<Command> commands = session.createQuery("FROM Command").list();
+//				
+//				for (Command commandItem : commands) {
+//					
+//					cmdExecuter.execute(commandItem);
+//					System.out.println("COMMAND NAME: ---> " + commandItem.getCommand_name());					
+//					
+//				}
+//
+//			} finally {
+//				session.close();
+//			}
+//		} catch (Exception e) {
+//			if (transaction != null) {
+//				transaction.rollback();
+//			}
+//			e.printStackTrace();
+//		}
+//		return null;
+//	}
+	
+	public Command getCommand(String commandName) {
 		Transaction transaction = null;
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			transaction = session.beginTransaction();
-			session.save(customer); // *
-			transaction.commit();
-			return customer;
+			try {
+				transaction = session.beginTransaction();
+				transaction.commit();
+				List<Command> commands = session.createQuery("FROM Command").list();
+
+				for (Command commandItem : commands) {
+					if (commandItem.getCommand_name().equals(commandName)) {
+						return commandItem;
+					}
+				}
+
+			} finally {
+				session.close();
+			}
 		} catch (Exception e) {
 			if (transaction != null) {
 				transaction.rollback();
 			}
 			e.printStackTrace();
-			return null;
-		}		
+		}
+		return null;
+	}
+	
+	
+	public void create(Command command) {
+		Transaction transaction = null;
+		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+			transaction = session.beginTransaction();
+			session.save(command); // *
+			transaction.commit();
+			
+		} catch (Exception e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}
 	}
 
-	public List<Customer> getCustomers() {
+	public List<Command> getCommands() {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			return session.createQuery("from customer", Customer.class).list();
+			return session.createQuery("from commands", Command.class).list();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -41,19 +99,19 @@ public class CustomerDao {
 		return null;
 	}
 	
-	public void listCustomers() {
+	public void listCommands() {
 		Transaction transaction = null;
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 			try {
 				transaction = session.beginTransaction();
-				List customers = session.createQuery("FROM Customer").list();
+				List commands = session.createQuery("FROM Customer").list();
 				
-				for (Iterator iterator = customers.iterator(); iterator.hasNext();) {
-					Customer customer = (Customer) iterator.next();
-					System.out.print("Id: " + customer.getId());
-					System.out.print("\tTCKN: " + customer.getTckn());
-					System.out.print("\tName: " + customer.getName());
-					System.out.println("\tSurname: " + customer.getSurname());			
+				for (Iterator iterator = commands.iterator(); iterator.hasNext();) {
+					Command command = (Command) iterator.next();
+					System.out.print("Command name : " + command.getCommand_name());
+					System.out.print("\tCommand description : " + command.getCommand_description());
+					System.out.print("\tClass name : " + command.getClass_name());
+					System.out.println("\tMethod name: " + command.getMethod_name());			
 				}
 				
 				transaction.commit();
@@ -72,7 +130,7 @@ public class CustomerDao {
 		}
 	}
 	   
-	public Customer update(int customerId, String tckn, String name, String surname) {
+	public void update(int customerId, String tckn, String name, String surname) {
 
 		Transaction transaction = null;
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -85,21 +143,18 @@ public class CustomerDao {
 				
 				session.update(customer);
 				transaction.commit();
-				return customer;
 				
 			} catch (HibernateException e) {
 				if (transaction != null)
 					transaction.rollback();
 				e.printStackTrace();
-				return null;
 			} finally {
 				session.close();
-				
 			}
 		}
 	}
 	   
-	public void delete(int customerId) {
+	public void delete(long customerId) {
 
 		Transaction transaction = null;
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {

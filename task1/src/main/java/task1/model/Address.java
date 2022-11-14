@@ -29,7 +29,7 @@ public class Address {
 	private String city;
 
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
 	public Address() { }

@@ -30,8 +30,12 @@ public class AddressDao {
 
 	public List<Address> getAddresses() {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-			return session.createQuery("from Addres", Address.class).list();
+			return session.createQuery("FROM Address", Address.class).list();
 		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	public void listAddresses() {
@@ -39,15 +43,15 @@ public class AddressDao {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 			try {
 				transaction = session.beginTransaction();
-				List addresses = session.createQuery("FROM Addres").list();
+				List addresses = session.createQuery("FROM Address").list();
 				for (Iterator iterator = addresses.iterator(); iterator.hasNext();) {
 					Address addres = (Address) iterator.next();
 					System.out.print("Id: " + addres.getId());
 					System.out.print(" Customer Id: " + addres.getCustomerId());
 					System.out.print(" City: " + addres.getCity());
 					System.out.println(" Address: " + addres.getAddress());
-					System.out.println(" Apart No: " + addres.getApartno());					
-					
+					System.out.println(" Apart No: " + addres.getApartno());	
+					System.out.println(" Apart No: " + addres.getBuildno());					
 				}
 				transaction.commit();
 			} catch (HibernateException e) {

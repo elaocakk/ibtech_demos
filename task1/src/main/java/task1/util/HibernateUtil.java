@@ -11,6 +11,7 @@ import org.hibernate.service.ServiceRegistry;
 
 import task1.model.Account;
 import task1.model.Address;
+import task1.model.Command;
 import task1.model.Customer;
 import task1.model.Phone;
 

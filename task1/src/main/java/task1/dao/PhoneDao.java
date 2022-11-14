@@ -30,9 +30,13 @@ public class PhoneDao {
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 			return session.createQuery("from Phone", Phone.class).list();
 		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
-	public void list() {
+	public void listPhones() {
 		Transaction transaction = null;
 		try (Session session = HibernateUtil.getSessionFactory().openSession()) {
 			try {
