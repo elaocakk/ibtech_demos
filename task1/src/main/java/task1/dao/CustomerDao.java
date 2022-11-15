@@ -107,6 +107,7 @@ public class CustomerDao {
 				transaction = session.beginTransaction();
 				Customer customer = (Customer) session.get(Customer.class, customerId);
 				session.delete(customer);
+				
 				transaction.commit();
 				
 			} catch (HibernateException e) {

@@ -27,7 +27,6 @@ public class MainTask3 {
 //		hashMap.put("customer_add", customer);
 //		hashMap.put("customer_delete", customer);		
 //		hashMap.put("customer_delete", customer);
-
 		
 		CommandDao commandDao = new CommandDao();
 

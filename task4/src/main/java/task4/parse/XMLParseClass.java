@@ -45,7 +45,7 @@ public class XMLParseClass extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		response.getWriter().append("Served at: ").append(request.getContextPath());		
+	response.getWriter().append("Served at: ").append(request.getContextPath());		
 		
 	}
 
@@ -55,7 +55,7 @@ public class XMLParseClass extends HttpServlet {
 		// burada html den gelen bilgileri çekip xml e kaydetmek gerekiyor
 		//********************************* input tan verileri çekme
 		String cmdname = request.getParameter("cmdname");
-//		String cusID = request.getParameter("cusID");
+		String cusID = request.getParameter("cusID");
 		String tckn = request.getParameter("tckn");
 		String name = request.getParameter("name");
 		String surname = request.getParameter("surname");
@@ -95,6 +95,11 @@ public class XMLParseClass extends HttpServlet {
             Element customertckn = document.createElement("Tckn");
             customertckn.appendChild(document.createTextNode(tckn));
             nodeCustomer.appendChild(customertckn);
+            
+            // fifth elements
+            Element customerid = document.createElement("CusID");
+            customerid.appendChild(document.createTextNode(cusID));
+            nodeCustomer.appendChild(customerid);
  
             // create the xml file
             //transform the DOM Object to an XML File
@@ -110,28 +115,44 @@ public class XMLParseClass extends HttpServlet {
             //********************************* executer çalıştırma
 	   		 XMLParseClass xmlparse = new XMLParseClass();
 //	       	 String xmlType = xmlFileName;
-	       	 
+	       	 Bag resultBag = null;
 	       	 String xmlType = xmlFileName ;
 	       	 try {
-	   			xmlparse.XMLParse(xmlType);
+	   			resultBag = xmlparse.XMLParse(xmlType);
 	   		 }
 	       	 catch (ParserConfigurationException | SAXException | IOException e) {
 	   			e.printStackTrace();
 	   		 } catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}    
+			}    	       	 
    		
 	       	 // *********************************  get response writer
 	         PrintWriter writer = response.getWriter();
 	          
 	         // build HTML code
-	         String htmlRespone = "<html>";
-	         htmlRespone += "<h2> İŞLEM BAŞARILI !!! </h2>";    
-	         htmlRespone += "</html>";
-	          
+	         String htmlResponse = "<html>";
+	         htmlResponse += "<h2> Kayit Basarili !!! </h2>";    
+	         htmlResponse += " Kayit ID: " + resultBag.getValue(BagKey.ID) ;  
+	         htmlResponse += " Kayit Name: " + resultBag.getValue(BagKey.NAME) ; 
+	         htmlResponse += " Kayit Surname: " + resultBag.getValue(BagKey.SURNAME) ; 
+	         htmlResponse += "</html>";	          
 	         // return response
-	         writer.println(htmlRespone);  
+	         writer.println(htmlResponse);  
+	         
+	         //build xml  response
+//	         String xmlResponse = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
+//	         xmlResponse += "<OutputList><OutputNode> ";    
+//	         xmlResponse += "<commandName> " + resultBag.getValue(BagKey.ID) + "</commandName>";  
+//	         xmlResponse += "<Name>" + resultBag.getValue(BagKey.NAME) + "</Name>" ; 
+//	         xmlResponse += "<Surname> " + resultBag.getValue(BagKey.SURNAME) + "</Surname>" ; 
+//	         xmlResponse += "<Tckn> " + resultBag.getValue(BagKey.TCKN) + "</Tckn>" ; 
+//	         xmlResponse += "</OutputNode></OutputList>";	
+//	         	     
+//	         // return response
+//	         writer.println(xmlResponse);  	   
+	         
+	       // *********************************   xml dosyası yapılacak
+	              	         
 	       	 
         } catch (ParserConfigurationException pce) {
             pce.printStackTrace();
@@ -142,7 +163,9 @@ public class XMLParseClass extends HttpServlet {
 	}
 	
 	
-	public void XMLParse(String xmlType) throws Exception {      
+	public Bag XMLParse(String xmlType) throws Exception {      
+		
+		Bag customerNewBag = null ;
 		
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
@@ -170,7 +193,10 @@ public class XMLParseClass extends HttpServlet {
                  String surname = elem.getElementsByTagName("Surname").item(0)
                                      .getChildNodes().item(0).getNodeValue();                 
 
-                 Customer cNew = new Customer(tckn, name, surname ) ;
+                 String cusid = elem.getElementsByTagName("CusID").item(0)
+                         .getChildNodes().item(0).getNodeValue();                 
+                 
+                 Customer cNew = new Customer(tckn, name, surname) ;
                  xmlList.put(cNew, commandName );
                  
                  System.out.println("Customer : " + cNew );
@@ -195,18 +221,21 @@ public class XMLParseClass extends HttpServlet {
 			CommandDao commandDao = new CommandDao();
 			Command cmd = commandDao.getCommand(commandName);
 		
+			
+			// command name e göre burası değişiyor ?????
 			Bag bagAdd = new Bag();
 			bagAdd.put(BagKey.TCKN, xmlcustomer.getTckn());
 			bagAdd.put(BagKey.NAME,  xmlcustomer.getName());
 			bagAdd.put(BagKey.SURNAME,  xmlcustomer.getSurname());
 
 			CommandExecuter cmdExecuter = new CommandExecuter();
-            Bag customerNewBag = (Bag) cmdExecuter.execute(cmd, bagAdd);
+            customerNewBag = (Bag) cmdExecuter.execute(cmd, bagAdd);
 //			Bag customerNewBag = (Bag) cmdExecuter.executeString(commandName, bagAdd);
 			
 			System.out.println("------> customerNewBag : " + customerNewBag );
 			
-		}        
+		}
+		return customerNewBag;        
        
         
     }
