@@ -14,7 +14,7 @@ public class Main {
 
 		// **
 		CustomerDao customerDao = new CustomerDao();
-		Customer customer = new Customer("123456589", "ela","ocak");
+		Customer customer = new Customer("647575434", "atila","ocak");
 
 		AddressDao addressDao = new AddressDao();
 		AccountDao accountDao = new AccountDao();
@@ -40,9 +40,9 @@ public class Main {
 		
 		//--------------------
 		
-		// ** insert address
-//		Address address = new Address(customer.getId(),"gebze","8","1","kocaeli");
-//		addressDao.create(address);
+		 //** insert address
+		Address address = new Address(customer.getId(),"gebze","8","1","kocaeli");
+		addressDao.create(address);
 //		
 		// ** update address
 //		addressDao.update(address.getId(),"gebze/kocaeli","2","3","kocaeli");
@@ -57,13 +57,13 @@ public class Main {
 //			System.out.println("Address id:" + adr.getId());
 //		}
 		
-		addressDao.listAddresses();
+//		addressDao.listAddresses();
 		
 		//--------------------
 		
 		// ** insert account
-//		Account account = new Account(customer.getId(),"gebze",2000);
-//		accountDao.create(account);
+		Account account = new Account(customer.getId(),"09658566",2000);
+		accountDao.create(account);
 		
 		// ** update account
 //		accountDao.update(account.getId(),"gebze",1500);
@@ -83,8 +83,8 @@ public class Main {
 		//--------------------
 		
 		// ** insert phone
-//		Phone phone = new Phone(customer.getId(),"5380564847");
-//		phoneDao.create(phone);
+		Phone phone = new Phone(customer.getId(),"5380564847");
+		phoneDao.create(phone);
 		
 		// ** update phone
 //		phoneDao.update(phone.getId(),"5380564848");		
