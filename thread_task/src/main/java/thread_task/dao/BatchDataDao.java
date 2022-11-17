@@ -20,7 +20,7 @@ public class BatchDataDao {
 			transaction = session.beginTransaction();
 			session.save(batchData);
 			transaction.commit();
-			System.out.println("--> BatchData Record: " + batchData.getSirano());
+			System.out.println("--------> BatchData Record: " + batchData.getSirano());
 		} catch (Exception e) {
 			if (transaction != null) {
 				transaction.rollback();

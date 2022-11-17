@@ -25,13 +25,13 @@ public class XBatch {
 		List<BatchData> batchDataProcessesList = batchDatas.stream().filter(x -> !(x.getStatus()) ).collect(Collectors.toList());
 		
 		ExecutorService executor = Executors.newFixedThreadPool(threadCount);
-		for (int i = 0; i < threadCount; i++) {
-			// start number  = (i * commitCount) + 1 -> 0 dan başlıyoruz diye
-			// end number  = ( (i+1) * commitCount) -> 0 dan başlıyoruz diye
-			Runnable worker = new Operation( (i * commitCount) + 1 , (i + 1) * commitCount, batchDataProcessesList);
+		for (int i = 0 ; i < threadCount; i++) {
+			// start number  = (i * commitCount)  -> 0 dan başlıyoruz diye
+			// end number  = ( (i+1) * commitCount) - 1 -> 0 dan başlıyoruz diye
+			Runnable worker = new Operation( (i * commitCount) , ((i + 1) * commitCount ) - 1 , batchDataProcessesList);
 			executor.execute(worker);
 			
-			System.out.println(i + " thread başladı.... ");
+			System.out.println("--------> " + i + " thread başladı.... ");
 		}
 		
 		executor.shutdown();

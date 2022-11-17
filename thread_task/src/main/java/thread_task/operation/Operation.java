@@ -27,7 +27,7 @@ public class Operation implements Runnable {
 		BatchDataDao batchDataDao = new BatchDataDao();
 		AccountDao accountDao = new AccountDao();
 
-		for (int i = startNumber; i < endNumber; i++) {
+		for (int i = startNumber; i <= endNumber; i++) {
 			
 			BatchData batchData = batchDataList.get(i);
 			Account account = accountDao.getAccount(batchData.getAccountno());
@@ -43,12 +43,11 @@ public class Operation implements Runnable {
 				}
 				
 				batchDataDao.updateStatus(batchData.getID(), true);
-
 			}
 
-			System.out.println("--> " + i + ". batch data yapıldı -->> " + Thread.currentThread().getName());
+			System.out.println("--------> " + i + ". batch data yapıldı --> " + Thread.currentThread().getName());
 			
-		}	
+		}
 		
 		
 	}
